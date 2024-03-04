@@ -1,0 +1,73 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Structure to represent a contact
+struct Contact {
+    string name;
+    string phoneNumber;
+};
+
+// Function to add a new contact to the contact list
+void addContact(vector<Contact>& contacts) {
+    Contact newContact;
+    
+    cout << "Enter contact name: ";
+    getline(cin >> ws, newContact.name);  // Use getline to handle spaces in the name
+    
+    cout << "Enter phone number: ";
+    getline(cin, newContact.phoneNumber);
+    
+    contacts.push_back(newContact);
+    
+    cout << "Contact added successfully!\n";
+}
+
+// Function to display all contacts in the contact list
+void viewContacts(const vector<Contact>& contacts) {
+    if (contacts.empty()) {
+        cout << "No contacts available.\n";
+    } else {
+        cout << "Contact List:\n";
+        for (const Contact& contact : contacts) {
+            cout << "Name: " << contact.name << "\tPhone Number: " << contact.phoneNumber << "\n";
+        }
+    }
+}
+
+int main() {
+    vector<Contact> contacts;  // Vector to store contacts
+    
+    char choice;
+
+    do {
+        cout << "\nContact Management System:\n";
+        cout << "1. Add Contact\n";
+        cout << "2. View Contacts\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice (1, 2, or 3): ";
+        cin >> choice;
+
+        switch (choice) {
+            case '1':
+                addContact(contacts);
+                break;
+
+            case '2':
+                viewContacts(contacts);
+                break;
+
+            case '3':
+                cout << "Exiting the contact management system. Goodbye!\n";
+                break;
+
+            default:
+                cout << "Invalid choice. Please enter 1, 2, or 3.\n";
+        }
+
+    } while (choice != '3');
+
+    return 0;
+}
