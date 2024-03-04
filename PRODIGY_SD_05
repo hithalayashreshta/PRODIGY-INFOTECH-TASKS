@@ -29,7 +29,7 @@ int main() {
     }
 
     // Set the URL to be scraped
-    const char* url = "https://example.com";
+    const char* url = "https://curl.haxx.se/download.html";
 
     // Set the write callback function
     std::string htmlContent;
